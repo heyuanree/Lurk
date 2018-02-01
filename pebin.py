@@ -4,6 +4,7 @@ import sys
 import os
 import subprocess
 
+
 class pebin():
     """
     PE binary class.
