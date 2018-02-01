@@ -21,6 +21,7 @@ class LurkMain():
     
     author = """\
         Author:     Ree
+        Email:      heyuanree@gmail.com
     """
     version = """\
         Version:    0.1
