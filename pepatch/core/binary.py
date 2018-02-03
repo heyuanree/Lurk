@@ -1,5 +1,5 @@
 from ctypes import *
-from dependency import pefile
+from ..dependency import pefile
 
 class Binary(object):
 

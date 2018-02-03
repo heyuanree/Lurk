@@ -35,11 +35,13 @@ class LurkMain():
     parser.add_option("-f", "--file", dest="FILE", action="store", type="string", help="File to inject")
     parser.add_option("-a", "--append_last_section", default=False, dest="APPEND_SECTION", action="store_true", help="Append shallcode to last section")
     parser.add_option("-o", "--output", dest="OUTPUT", action="store", type="string", help="The backdoor output file")
-    parser.add_option("-s", "--shellcode", dest="SHELLCODE", type="string", acton="store", help="Shellcode you want to use in backdoored file")
+    parser.add_option("-s", "--shellcode", dest="SHELLCODE", type="string", action="store", help="Shellcode you want to use in backdoored file")
     parser.add_option("-d", "--directory", dest="DIR", action="store", type="string", help="This is the location you want to backdoor files")
-    parser.add_option("-lh", "--left_host", dest="LHOST", action="store", type="string", help="IP for reverse connection")
-    parser.add_option("-lp", "--left_port", dest="LPORT", action="store", type="int", help="Port for reverse connection")
+    parser.add_option("-H", "--left_host", dest="LHOST", action="store", type="string", help="IP for reverse connection")
+    parser.add_option("-P", "--left_port", dest="LPORT", action="store", type="int", help="Port for reverse connection")
     parser.add_option("-i", "--inject", dest="INJECT", action="store_true", default=False, help="Inject code in PE")
+    parser.add_option("-t", "--new_thread", dest="NEW_THREAD", action="store_true", default=False, help="Start a new thread to call shellcode")
+    parser.add_option("-C", "--cflags", dest="CFLAGS", action="store", type="string", help="Compile option")
 
     (options, args) = parser.parse_args()
 
@@ -54,20 +56,6 @@ class LurkMain():
             header = testbinary.read(4)
         if 'MZ' in header:
             return 'PE'
-        
-    def get_sepcial_calladdress(peFilePath, mnemonic='call', op_str=None):
-        peFile = lief.parse(peFilePath)
-        callAddress = []
-        sectionTextRawData = ""
-        sectionText = peFile.get_section('.text')
-        sectionTextContent = sectionText.content
-        for _byte in sectionTextContent:
-            sectionTextRawData += chr(_byte)
-        md = Cs(CS_ARCH_X86, CS_MODE_32)
-        for _code in md.disasm(sectionTextRawData, sectionText.virtual_address):
-            if _code.mnemonic == mnemonic:
-                callAddress.append((_code.address, _code.size))
-        return callAddress
 
     if not options.FILE:
         parser.print_help()
@@ -81,6 +69,8 @@ class LurkMain():
                                SHELLCODE=options.SHELLCODE,
                                LHOST=options.LHOST,
                                LPORT=options.LPORT,
+                               NEW_THREAD=options.NEW_THREAD,
+                               CFLAGS=options.CFLAGS,
                                )
     else:
         print("Not Supported.")
