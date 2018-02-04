@@ -4,7 +4,6 @@ from __future__ import print_function
 import logging, coloredlogs
 import sys
 import os
-import colorama
 
 # mkdir for logger
 if not os.path.exists('log'):
