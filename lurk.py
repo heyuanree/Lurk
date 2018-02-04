@@ -19,7 +19,9 @@ def signal_ahndler(singal, frame):
     sys.exit(0)
 
 class LurkMain():
-    
+
+    logger.debug("Start")
+
     author = """\
         Author:     Ree
         Email:      heyuanree@gmail.com
@@ -34,9 +36,10 @@ class LurkMain():
 
     parser = OptionParser(usage=usage)
     parser.add_option("-f", "--file", dest="FILE", action="store", type="string", help="File to inject")
-    parser.add_option("-a", "--append_last_section", default=False, dest="APPEND_SECTION", action="store_true", help="Append shallcode to last section")
+    parser.add_option("-A", "--append_last_section", default=False, dest="APPEND_SECTION", action="store_true", help="Append shallcode to last section")
+    parser.add_option("-a", "--addr_patch", dest="ADDR_PATCH", action="store", type="int", help="Address to patch, use with '-A' option")
     parser.add_option("-o", "--output", dest="OUTPUT", action="store", type="string", help="The backdoor output file")
-    parser.add_option("-s", "--shellcode", dest="SHELLCODE", type="string", action="store", help="Shellcode you want to use in backdoored file")
+    parser.add_option("-s", "--shellcode", dest="SHELLCODE", type="string", action="store", help="Shellcode you want to use in backdoored file, Please use supported extension")
     parser.add_option("-d", "--directory", dest="DIR", action="store", type="string", help="This is the location you want to backdoor files")
     parser.add_option("-H", "--left_host", dest="LHOST", action="store", type="string", help="IP for reverse connection")
     parser.add_option("-P", "--left_port", dest="LPORT", action="store", type="int", help="Port for reverse connection")
@@ -74,11 +77,11 @@ class LurkMain():
                                SHELLCODE=options.SHELLCODE,
                                LHOST=options.LHOST,
                                LPORT=options.LPORT,
-                               NEW_THREAD=options.NEW_THREAD,
                                CFLAGS=options.CFLAGS,
                                CAVE_FOUND=options.CAVE_FOUND,
                                LEN_SHELLCODE=options.LEN_SHELLCODE,
                                JUMP_CAVES=options.JUMP_CAVES,
+                               ADDR_PATCH=options.ADDR_PATCH,
                                )
     else:
         logger.error("Not Supported.")
