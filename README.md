@@ -66,19 +66,19 @@ patch地址，需要使用者手动确定，后续将自动化该功能。值得
 
 ## Task list
 
-- [] 支持i386架构64位
-- [] 支持ELF,Mach-O
-- [] 实现code cave jump方式添加shellcode
-- [] 实现新加section方式增加shellcode
-- [] 自动化寻找可以patch的地址，并测试
-- [] 添加功能dll
-- [] 丰富SMC加密算法，如增加AES/DES
-- [] 完善log信息
-- [] 实现控制台功能，前端增加控制界面
-- [] 增加加密通讯功能
-- [] 添加C/S或者B/S架构，前端只有GUi，功能代码全部放入后端
-- [] 美化界面
-- [] 完全模块化
+- [ ] 支持i386架构64位
+- [ ] 支持ELF,Mach-O
+- [ ] 实现code cave jump方式添加shellcode
+- [ ] 实现新加section方式增加shellcode
+- [ ] 自动化寻找可以patch的地址，并测试
+- [ ] 添加功能dll
+- [ ] 丰富SMC加密算法，如增加AES/DES
+- [ ] 完善log信息
+- [ ] 实现控制台功能，前端增加控制界面
+- [ ] 增加加密通讯功能
+- [ ] 添加C/S或者B/S架构，前端只有GUi，功能代码全部放入后端
+- [ ] 美化界面
+- [ ] 完全模块化
 
 ## Development
 
