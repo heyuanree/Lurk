@@ -265,8 +265,14 @@ class LurkPyQt5(QMainWindow):
         for c in md.disasm(raw_data, oep):
             if c.size == 5 and c.mnemonic == 'call':    # now only allow 'call'
                 appropriate_address.append(c.address)
-        self.address_edit.setText(hex(appropriate_address[4])[:-1])  # maybe fifth 'call; is not too dangerous.
-        logger.info('Auto select address: {}'.format(hex(appropriate_address[4])))
+        try:
+            self.address_edit.setText(hex(appropriate_address[4])[:-1])  # maybe fifth 'call; is not too dangerous.
+            last_appropriate_address = hex(appropriate_address[4])[:-1]
+        except Exception:
+            logger.warn('Cannot find fifth \'call\', use the last one \'call\'.')
+            self.address_edit.setText(hex(appropriate_address[-1])[:-1])
+            last_appropriate_address = hex(appropriate_address[-1])[:-1]
+        logger.info('Auto select address: {}'.format(last_appropriate_address))
 
     def url_edit_func(self, text):
         self.url_value = text
