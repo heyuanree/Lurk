@@ -4,7 +4,7 @@
 
 ## FEATURE
 
-- 支持i386架构32位PE程序
+- 支持x86架构32位PE程序
 - 采用模块化开发（目前GUI只封装了downloadAndExec的功能）
 - 功能代码支持以asm/bin/C/dll等形式开发
 - 以拓展section的形式增加shellcode
