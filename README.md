@@ -101,7 +101,7 @@ patch后因为调用了我自己写的dll，将`Lurk\shellcode\dll\downloader.dl
 
 ## Task list
 
-- [ ] 支持i386架构64位
+- [ ] 支持x86架构64位
 - [ ] 支持ELF,Mach-O
 - [ ] 实现code cave jump方式添加shellcode
 - [ ] 实现新加section方式增加shellcode
