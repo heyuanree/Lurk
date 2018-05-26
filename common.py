@@ -64,7 +64,7 @@ def nasm_build(filename):
     if file_path:
         src_input = file_path
         bin_output = os.path.normpath(os.path.join(locate_file_dir(filename), bin_name))
-        p = Popen(["nasm", "-f bin", "-O3", "-o {}".format(bin_output), "{}".format(src_input)])
+        p = Popen(["dependency/nasm/nasm", "-f bin", "-O3", "-o {}".format(bin_output), "{}".format(src_input)])
         p.wait()
     else:
         logger.error("nasm_build find no filename: {}.".format(filename))
