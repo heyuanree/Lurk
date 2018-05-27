@@ -49,8 +49,6 @@ trusted-host = mirrors.aliyun.com
 
 `pip install -r requestments.txt`
 
-安装需要的依赖[nasm](https://www.nasm.us/pub/nasm/snapshots/latest/)，下载最新的nasm安装即可
-
 #### Troubleshooting
 
 `error: can't copy 'src\build\capstone.dll': doesn't exist or not a regular file`
